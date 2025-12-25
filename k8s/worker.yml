@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-image
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: worker-image
+  template:
+    metadata:
+      labels:
+        app: worker-image
+    spec:
+      containers:
+      - name: worker-image
+        image: devops-voting-app-worker
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        imagePullPolicy: Never
+        
+

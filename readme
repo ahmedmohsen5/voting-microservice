@@ -1,0 +1,28 @@
+voting-devops/
+  docker/                 # Dockerfiles (or use upstream images)
+  k8s/
+    base/
+    overlays/dev/
+    overlays/prod/
+  terraform/
+    modules/
+      vpc/
+      eks/
+      ecr/
+      rds/
+      redis/
+      jenkins_ec2/
+    envs/dev/
+    envs/prod/
+  ansible/
+    inventory/
+    playbooks/
+    roles/
+  jenkins/
+    Jenkinsfile
+  monitoring/
+    values-kube-prometheus-stack.yaml
+    values-loki.yaml
+  docs/
+    architecture.md
+    runbook.md
