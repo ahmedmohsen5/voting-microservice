@@ -20,5 +20,7 @@ jobs:
         run: |
           chmod +x ./image-build.sh
           ./image-build.sh
+      - name: List Docker images
+        run: docker images
       
       
