@@ -12,5 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run tests
-        run: echo "Add your test commands here"
+      - name: build images
+        run: |
+          chmod +x ./image-build.sh
+          ./image-build.sh
+      
+      
