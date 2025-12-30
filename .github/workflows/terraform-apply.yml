@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 jobs:
   apply:
+    environment: dev
     runs-on: ubuntu-latest
     defaults:
       run:
