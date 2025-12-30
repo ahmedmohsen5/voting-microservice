@@ -13,5 +13,5 @@ module "ecr" {
   source = "../../modules/ecr"
   tags   = local.tags
   repositories = ["voting-app", "results-app", "worker-app"]
-  keep_last_images = local.tags
+  keep_last_images = 30
 }
