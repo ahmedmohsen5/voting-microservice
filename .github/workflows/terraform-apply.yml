@@ -9,6 +9,7 @@ on:
 jobs:
   apply:
     environment: dev
+    
     runs-on: ubuntu-latest
     defaults:
       run:
