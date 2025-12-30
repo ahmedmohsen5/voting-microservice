@@ -8,13 +8,13 @@ resource "aws_ecr_repository" "this" {
   }
 }
 
-resource "aws_ecr_lifecycle_policy" "name" {
+resource "aws_ecr_lifecycle_policy" "this" {
   for_each = aws_ecr_repository.this
   repository = each.value.name
 
-  policy = jsondecode({
+  policy = jsonencode({
     rules = [{
-        rulePriotry = 1
+        rulePriority = 1
         description = "Keep last ${var.keep_last_images} images"
         selection = {
           tagStatus = "any"
