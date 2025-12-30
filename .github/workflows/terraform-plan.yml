@@ -20,7 +20,7 @@ jobs:
       - name: list files
         run: ls -la
       - name: terraform fmt
-        run: terraform fmt -check -recursive
+        run: terraform fmt -check 
       - name: terraform init
         run: terraform init
       - name: terraform validate
