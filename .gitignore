@@ -12,6 +12,7 @@ override.tf.json
 .DS_Store
 .vscode/
 .idea/
+.terraform.*
 
 # Secrets
 *.pem
