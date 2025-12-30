@@ -2,7 +2,7 @@ name: terraform plan (dev environment)
 on:
   pull_request:
     paths:
-      - "terraform/**"
+      - "terraform/dev/**"
   
 jobs:
   plan:
