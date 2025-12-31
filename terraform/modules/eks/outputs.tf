@@ -18,9 +18,6 @@ output "cluster_id" {
   value = module.eks.cluster_id
 }
 
-output "node_group_name" {
-  value = module.eks.node_group_name
-}
 
 output "oidc_provider-arn" {
   value = module.eks.oidc_provider_arn
