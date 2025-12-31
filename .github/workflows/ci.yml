@@ -8,7 +8,9 @@ on:
       - feature/local-k8s
 
 jobs:
+
   build:
+    environment: dev
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
