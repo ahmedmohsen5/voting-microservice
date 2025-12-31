@@ -25,3 +25,11 @@ module "vpc" {
   private_subnets = ["10.0.11.0/24", "10.0.12.0/24"]
   tags = local.tags
 }
+
+module "eks" {
+  source = "../../modules/eks"
+  cluster_name = "${var.project}-eks"
+  vpc_id = module.vpc.vpc_id
+  private_subnet_ids = module.vpc.private_subnets
+  tags = local.tags
+}
