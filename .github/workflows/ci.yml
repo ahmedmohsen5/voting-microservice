@@ -17,20 +17,12 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: set the docker repo name 
-        run: echo "REPO=$GITHUB_REPOSITORY" >> $GITHUB_ENV
+        run: echo "REPO=195162992068.dkr.ecr.us-east-1.amazonaws.com" >> $GITHUB_ENV
       - name: build images
         run: |
           chmod +x ./image-build.sh
           ./image-build.sh
       - name: List Docker images
         run: docker images
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-        with:
-          region: us-east-1
-      - name: Push to Amazon ECR
-        run: | 
-          docker push $REPO/results-app:latest
-          docker push $REPO/voting-app:latest
-          docker push $REPO/worker-app:latest
+      
+      
