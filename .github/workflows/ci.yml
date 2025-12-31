@@ -8,7 +8,9 @@ on:
       - feature/local-k8s
 
 jobs:
+
   build:
+    environment: dev
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -22,5 +24,13 @@ jobs:
           ./image-build.sh
       - name: List Docker images
         run: docker images
-      
-      
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        with:
+          region: us-east-1
+      - name: Push to Amazon ECR
+        run: | 
+          docker push $REPO/results-app:latest
+          docker push $REPO/voting-app:latest
+          docker push $REPO/worker-app:latest
