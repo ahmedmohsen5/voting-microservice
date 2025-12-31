@@ -6,6 +6,14 @@ on:
   pull_request:
     branches:
       - feature/local-k8s
+  workflow_dispatch:
+    inputs: 
+      version:
+        description: 'Version to build'
+        required: true
+        default: 'v1.0.0'
+
+    
 
 jobs:
 
@@ -38,9 +46,12 @@ jobs:
 
       - name: Push to Amazon ECR
         run: |
-          docker push "$REPO"/results-app:latest
-          docker push "$REPO"/voting-app:latest
-          docker push "$REPO"/worker-app:latest
+          docker tag "$REPO"/results-app:latest "$REPO"/results-app:${{ github.event.inputs.version }}
+          docker tag "$REPO"/voting-app:latest "$REPO"/voting-app:${{ github.event.inputs.version }}
+          docker tag "$REPO"/worker-app:latest "$REPO"/worker-app:${{ github.event.inputs.version }}
+          docker push "$REPO"/results-app:${{ github.event.inputs.version }}
+          docker push "$REPO"/voting-app:${{ github.event.inputs.version }}
+          docker push "$REPO"/worker-app:${{ github.event.inputs.version }}
       
       
       
