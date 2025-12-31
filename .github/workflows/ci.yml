@@ -46,12 +46,12 @@ jobs:
 
       - name: Push to Amazon ECR
         run: |
-          docker tag "$REPO"/results-app:latest "$REPO"/results-app:${{ github.event.inputs.version }}
-          docker tag "$REPO"/voting-app:latest "$REPO"/voting-app:${{ github.event.inputs.version }}
-          docker tag "$REPO"/worker-app:latest "$REPO"/worker-app:${{ github.event.inputs.version }}
-          docker push "$REPO"/results-app:${{ github.event.inputs.version }}
-          docker push "$REPO"/voting-app:${{ github.event.inputs.version }}
-          docker push "$REPO"/worker-app:${{ github.event.inputs.version }}
+          docker tag "$REPO"/results-app:latest "$REPO"/results-app:${{ inputs.version != '' && inputs.version || github.sha }}
+          docker tag "$REPO"/voting-app:latest "$REPO"/voting-app:${{ inputs.version != '' && inputs.version || github.sha }}
+          docker tag "$REPO"/worker-app:latest "$REPO"/worker-app:${{ inputs.version != '' && inputs.version || github.sha }}
+          docker push "$REPO"/results-app:${{ inputs.version != '' && inputs.version || github.sha }}
+          docker push "$REPO"/voting-app:${{ inputs.version != '' && inputs.version || github.sha }}
+          docker push "$REPO"/worker-app:${{ inputs.version != '' && inputs.version || github.sha }}
       
       
       
