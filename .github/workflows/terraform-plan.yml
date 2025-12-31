@@ -32,3 +32,6 @@ jobs:
         run: terraform validate
       - name: terraform plan
         run: terraform plan
+      - name: destroy terraform 
+        run: terraform destroy -auto-approve
+        
