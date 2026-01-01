@@ -14,13 +14,10 @@ module "eks" {
 
   eks_managed_node_groups = {
     default = {
-      desired_capacity = 2
       max_capacity     = 3
       min_capacity     = 1
 
       instance_types = ["t3.micro"]
-
-      disk_size = 20
 
       tags = {
         Name = "${var.cluster_name}-node-group"
